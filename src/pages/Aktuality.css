@@ -193,6 +193,10 @@
         padding: 6rem 0 3rem;
     }
 
+    .aktuality-content {
+        padding-top: 1.5rem;
+    }
+
     .aktuality-grid {
         grid-template-columns: 1fr;
         gap: 2rem;

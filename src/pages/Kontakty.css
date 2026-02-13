@@ -106,7 +106,7 @@
 /* Form Styles - Minimalist */
 .kontakty-form-wrapper {
     background: #fff;
-    padding: 4rem;
+    padding: 2.5rem;
     border: 3px solid var(--fg);
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     /* Organic soft square */
@@ -117,13 +117,17 @@
 .kontakty-form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
+}
+
+.form-heading {
+    display: none;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .form-group label {
@@ -139,7 +143,7 @@
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 1.25rem;
+    padding: 1rem;
     background: #fff;
     border: 3px solid #ddd;
     /* Thicker border for visibility */
@@ -201,10 +205,10 @@
     position: relative;
     /* Organic Top Wave Mask */
     -webkit-mask-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,50 C950,20 750,90 450,40 C150,10 0,60 0,60 Z' fill='black'/%3E%3C/svg%3E"),
         linear-gradient(black, black);
     mask-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,50 C950,20 750,90 450,40 C150,10 0,60 0,60 Z' fill='black'/%3E%3C/svg%3E"),
         linear-gradient(black, black);
 
     -webkit-mask-size: 100% 120px, 100% calc(100% - 119px);
@@ -226,7 +230,29 @@
 /* Responsive */
 @media (max-width: 768px) {
     .kontakty-container {
-        margin: -2rem auto 4rem;
+        margin: 5.5rem auto 4rem;
+        padding: 0 1rem;
+    }
+
+    .kontakty-main .page-hero {
+        display: none !important;
+    }
+
+    .form-heading .page-hero-title-main {
+        font-size: 3rem;
+        margin-bottom: 0rem;
+        z-index: 1;
+        /* Ensure text is above underline */
+    }
+
+    .form-heading .page-hero-title-main::after {
+        background: #ff006e !important;
+        bottom: -8px;
+        /* Adjust vertical position */
+        height: 0.3em;
+        z-index: 0;
+        width: 100%;
+        opacity: 0.6;
     }
 
     .company-name {
@@ -236,5 +262,163 @@
     .submit-btn {
         width: 100%;
         justify-content: center;
+    }
+
+    /* Show form first on mobile */
+    .kontakty-form-wrapper {
+        order: -1;
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .kontakty-form {
+        gap: 0.8rem;
+    }
+
+    .kontakty-grid {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Refactored Mobile Styles */
+    /* Refactored Mobile Styles */
+    .company-name {
+        margin-bottom: 0.5rem;
+        font-size: 2.3rem;
+        /* Increased size */
+        grid-column: 1 / -1;
+        text-align: center;
+        background: url('https://t4.ftcdn.net/jpg/06/90/52/85/360_F_690528557_OUo15HbEShwyeJyelOkSXRxAhCTvJGv8.jpg') center/cover no-repeat;
+        border: 3px solid #5d4037;
+        /* Even darker border */
+        border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+        padding: 0.8rem 0.2rem;
+        /* Minimized horizontal padding */
+        width: 100%;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+        transform: rotate(-1deg);
+        /* Half angle */
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        letter-spacing: -0.5px;
+        /* Slight negative spacing to fit */
+        position: relative;
+        margin-top: 3rem;
+        /* Space for strings */
+    }
+
+    .company-name::before {
+        content: '';
+        position: absolute;
+        top: -40px;
+        left: 20px;
+        /* Offset from edges */
+        right: 20px;
+        height: 40px;
+        background: linear-gradient(to top left, transparent 48%, #5d4037 48%, #5d4037 52%, transparent 52%) no-repeat left top / 50% 100%,
+            linear-gradient(to top right, transparent 48%, #5d4037 48%, #5d4037 52%, transparent 52%) no-repeat right top / 50% 100%;
+    }
+
+    .company-name::after {
+        content: '';
+        position: absolute;
+        top: -45px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 12px;
+        background: #333;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        border: 2px solid #8b5a2b;
+    }
+
+    .info-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        /* Removed justify-items: center to allow start alignment */
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 0.5rem;
+        margin-bottom: 0;
+        width: 100%;
+        padding: 0.25rem;
+        justify-content: flex-start;
+        /* Align left */
+    }
+
+    .info-item .icon {
+        width: 28px;
+        height: 28px;
+        padding: 4px;
+        border-width: 1.5px;
+        margin-top: 0;
+    }
+
+    .info-item p {
+        font-size: 0.85rem;
+        line-height: 1.2;
+    }
+
+    .phone-link,
+    .email-link {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        line-height: 1.2;
+        font-weight: 400;
+        color: #444;
+    }
+
+    .kontakty-form-wrapper {
+        padding: 1rem;
+        min-height: auto !important;
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        display: none;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .form-group textarea {
+        height: 80px;
+    }
+
+    .form-heading {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 1.8rem;
+        color: var(--fg);
+        text-align: center;
+        margin-bottom: 0.2rem;
+    }
+
+    .submit-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        width: fit-content;
+        align-self: center;
+    }
+
+    .kontakty-full-image {
+        display: none;
     }
 }

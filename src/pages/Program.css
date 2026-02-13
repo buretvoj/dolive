@@ -417,7 +417,7 @@
 /* Shorter viewports (e.g. 1440x900) */
 @media (max-height: 900px) {
     .lineup-section {
-        padding: 3rem 0 4rem;
+        padding: 3rem 0 10rem;
     }
 
     .lineup-header {

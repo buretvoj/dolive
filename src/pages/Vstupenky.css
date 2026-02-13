@@ -282,3 +282,10 @@
         /* Constrain width for 2-column layout */
     }
 }
+
+/* Shorter viewports (e.g. 1440x900) */
+@media (max-height: 900px) {
+    .vstupenky-container {
+        margin-bottom: 12rem;
+    }
+}

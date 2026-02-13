@@ -565,6 +565,11 @@
 }
 
 @media (max-width: 768px) {
+    .info-hub {
+        padding-top: 1rem;
+        /* Reduced from default 2rem */
+    }
+
     .info-hub .container {
         padding: 0 0.75rem;
     }
@@ -646,18 +651,73 @@
     }
 
     .info-detail {
-        padding: 4rem 0 6rem;
+        padding: 1rem 0 5rem;
     }
 
     .info-detail-title {
         font-size: 2.2rem;
+    }
+
+    .organic-back-button {
+        margin-top: 0.5rem;
+    }
+
+    /* Mobile Text & Spacing Reductions */
+    .lead {
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .info-text-block {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .info-text-block p {
+        margin-bottom: 1rem;
+    }
+
+    .organic-card {
+        padding: 2.5rem;
+    }
+
+    .organic-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .info-grid-2col,
+    .info-grid-3col {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .highlight-box {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        margin: 1rem 0;
+    }
+
+    .icon-list {
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .icon-list li {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .icon-list strong {
+        font-size: 1rem;
     }
 }
 
 /* Shorter viewports (e.g. 1440x900) */
 @media (max-height: 900px) {
     .info-hub {
-        padding: 2rem 0 4rem;
+        padding: 2rem 0 10rem;
     }
 
     .info-hub-grid {

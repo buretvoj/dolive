@@ -253,7 +253,11 @@
 /* Responsive */
 @media (max-width: 768px) {
     .page-hero {
-        padding: 8rem 0 3rem;
+        padding: 6rem 0 1.5rem;
+    }
+
+    .page-hero-content {
+        gap: 1rem;
     }
 
     .page-hero-title {
@@ -278,7 +282,7 @@
 }
 
 /* Shorter viewports (e.g. 1440x900) */
-@media (max-height: 900px) {
+@media (max-height: 900px) and (min-width: 769px) {
     .page-hero {
         padding: 7rem 0 2rem;
     }
