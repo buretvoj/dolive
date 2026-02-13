@@ -1,0 +1,691 @@
+.info-main {
+    background: var(--bg);
+}
+
+/* ==========================================================
+   HUB PAGE — Card Grid
+========================================================== */
+
+.info-hub {
+    padding: 2rem 0 12rem;
+}
+
+.info-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.info-hub-card {
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: visible;
+    /* Allow arrow to peek out */
+    text-decoration: none;
+    color: var(--fg);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 3px solid var(--fg);
+    background: #fff;
+    margin: 0 auto;
+    isolation: isolate;
+    animation: floating-info-card 8s ease-in-out infinite;
+}
+
+@keyframes floating-info-card {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    33% {
+        transform: translate(1px, -3px) rotate(0.2deg);
+    }
+
+    66% {
+        transform: translate(-1px, -2px) rotate(-0.2deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+.info-hub-card:hover {
+    animation-play-state: paused;
+    transform: translateY(-12px) rotate(-1.5deg) scale(1.03);
+    z-index: 10;
+}
+
+/* Staggered floating effect */
+.info-hub-grid>div:nth-child(2) .info-hub-card {
+    animation-delay: -1.5s;
+    animation-duration: 9s;
+}
+
+.info-hub-grid>div:nth-child(3) .info-hub-card {
+    animation-delay: -3s;
+    animation-duration: 7s;
+}
+
+.info-hub-grid>div:nth-child(4) .info-hub-card {
+    animation-delay: -4.5s;
+    animation-duration: 8.5s;
+}
+
+.info-hub-grid>div:nth-child(5) .info-hub-card {
+    animation-delay: -6s;
+    animation-duration: 7.5s;
+}
+
+.info-hub-grid>div:nth-child(6) .info-hub-card {
+    animation-delay: -0.5s;
+    animation-duration: 9.5s;
+}
+
+/* Subtle animated background */
+.info-hub-card-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.95;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.info-hub-card:hover .info-hub-card-bg {
+    transform: scale(1.1);
+}
+
+.info-hub-card-content {
+    position: static;
+    /* Let absolute arrow track the card, not this div */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: -1rem;
+    /* Shift content up slightly */
+}
+
+/* --- Icon --- */
+/* --- Icon --- */
+.info-hub-card-icon {
+    width: 52px;
+    height: 52px;
+    /* Removed border-radius */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    /* Removed background, backdrop-filter, border */
+    background: transparent;
+    border: none;
+    color: var(--fg);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.info-hub-card:hover .info-hub-card-icon {
+    transform: scale(1.2) rotate(5deg);
+    background: transparent;
+}
+
+/* --- Title --- */
+.info-hub-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--fg);
+}
+
+.title-mobile,
+.desc-mobile {
+    display: none;
+}
+
+/* --- Description --- */
+.info-hub-card-desc {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--fg);
+    opacity: 0.8;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+/* --- Arrow --- */
+.info-hub-card-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--fg);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.info-hub-card:hover .info-hub-card-arrow {
+    transform: translateX(-50%) translateY(5px);
+    opacity: 1;
+}
+
+/* --- Card Color Variants with Lighter Organic Shapes --- */
+
+/* Green (Dolívka) */
+/* Green (Dolívka) */
+.info-hub-card--green {
+    border-radius: 63% 37% 73% 27% / 37% 65% 35% 63%;
+    box-shadow: 12px 12px 0 var(--accent-pop);
+    background: linear-gradient(145deg, #ecfccb 0%, #d9f99d 100%);
+}
+
+/* Pink (Festival) */
+/* Pink (Festival) */
+.info-hub-card--pink {
+    border-radius: 35% 65% 30% 70% / 70% 30% 65% 35%;
+    box-shadow: 12px 12px 0 #ff006e;
+    background: linear-gradient(145deg, #fdf2f8 0%, #fbcfe8 100%);
+}
+
+/* Navy (Doprava) */
+/* Navy (Doprava) */
+.info-hub-card--navy {
+    border-radius: 52% 48% 43% 57% / 58% 42% 52% 48%;
+    /* Subtler curve */
+    box-shadow: 12px 12px 0 #2563eb;
+    background: linear-gradient(145deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+/* Lime (Pobyt) */
+/* Lime (Pobyt) */
+.info-hub-card--lime {
+    border-radius: 68% 32% 64% 36% / 41% 59% 36% 64%;
+    box-shadow: 12px 12px 0 #14b8a6;
+    background: linear-gradient(145deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+/* Orange (Ubytování) */
+/* Orange (Ubytování) */
+.info-hub-card--orange {
+    border-radius: 32% 68% 40% 60% / 60% 40% 70% 30%;
+    box-shadow: 12px 12px 0 #f97316;
+    background: linear-gradient(145deg, #fff7ed 0%, #ffedd5 100%);
+}
+
+/* Brown (Jídlo) */
+/* Brown (Jídlo) */
+.info-hub-card--brown {
+    border-radius: 58% 42% 55% 45% / 45% 55% 40% 60%;
+    box-shadow: 12px 12px 0 #89603e;
+    background: linear-gradient(145deg, #fafaf9 0%, #f5f5f4 100%);
+    --shadow-color: #89603e;
+    /* Track color for mobile easy override */
+}
+
+/* Add variable to others for proper color tracking */
+.info-hub-card--green {
+    --shadow-color: var(--accent-pop);
+}
+
+.info-hub-card--pink {
+    --shadow-color: #ff006e;
+}
+
+.info-hub-card--navy {
+    --shadow-color: #2563eb;
+}
+
+.info-hub-card--lime {
+    --shadow-color: #14b8a6;
+}
+
+.info-hub-card--orange {
+    --shadow-color: #f97316;
+}
+
+
+/* ==========================================================
+   DETAIL PAGE
+========================================================== */
+
+.info-detail {
+    padding: 1rem 0 12rem;
+}
+
+
+
+.info-detail-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.organic-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--fg);
+    text-decoration: none;
+    position: relative;
+    margin-top: 6rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    width: fit-content;
+    isolation: isolate;
+}
+
+.organic-back-button:hover {
+    transform: translateX(-8px);
+}
+
+.organic-back-button::after {
+    content: '';
+    position: absolute;
+    left: -5%;
+    bottom: 5px;
+    /* Adjusting position to be clearly under the text */
+    width: 110%;
+    height: 0.4em;
+    /* Thicker line */
+    background: #ccc !important;
+    /* Lighter grey */
+    opacity: 0.5 !important;
+    /* Slightly lowered opacity for a "marker" feel */
+    z-index: -1;
+    transform: rotate(-1.5deg);
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    clip-path: polygon(0% 15%, 15% 5%, 35% 20%, 65% 10%, 85% 25%, 100% 15%,
+            100% 85%, 85% 95%, 65% 80%, 35% 90%, 15% 75%, 0% 85%);
+    display: block !important;
+    visibility: visible !important;
+    animation: floating-marker 6s ease-in-out infinite;
+}
+
+@keyframes floating-marker {
+    0% {
+        transform: translate(0, 0) rotate(-1.5deg);
+    }
+
+    33% {
+        transform: translate(2px, 1px) rotate(-2deg);
+    }
+
+    66% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(-1.5deg);
+    }
+}
+
+.organic-back-button span {
+    position: relative;
+    top: 4px;
+}
+
+
+
+.info-detail-body {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   SHARED CONTENT STYLES (used inside detail pages)
+========================================================== */
+
+/* Text Blocks */
+.info-text-block {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+.info-text-block p {
+    margin-bottom: 1.5rem;
+}
+
+.lead {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--fg);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+/* Funky Cards */
+.info-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Organic Cards */
+.organic-card {
+    padding: 3.5rem 2.5rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 3px solid var(--fg);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.organic-card-green {
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    box-shadow: 12px 12px 0 color-mix(in srgb, var(--accent-pop), transparent 50%);
+}
+
+.organic-card-pink {
+    border-radius: 40% 60% 35% 65% / 65% 35% 60% 40%;
+    box-shadow: 12px 12px 0 rgba(255, 0, 110, 0.5);
+}
+
+.organic-card-navy {
+    border-radius: 50% 50% 45% 55% / 55% 45% 50% 50%;
+    box-shadow: 12px 12px 0 rgba(255, 0, 110, 0.5);
+}
+
+.organic-card-yellow {
+    border-radius: 48% 52% 60% 40% / 40% 60% 40% 60%;
+    box-shadow: 12px 12px 0 color-mix(in srgb, var(--accent-pop), transparent 50%);
+}
+
+.organic-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.card-header-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-icon {
+    color: var(--fg);
+    opacity: 0.8;
+}
+
+.organic-card h3 {
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--fg);
+}
+
+.organic-card p {
+    text-align: center;
+    margin: 0;
+}
+
+/* Transport Options handled by organic-card and info-grid-2col */
+
+
+
+
+/* Icon List */
+.icon-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.icon-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+    background: #fff;
+    border: 3px solid var(--fg);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    /* Default Organic Shape */
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    box-shadow: 8px 8px 0 #ddd;
+}
+
+/* Alternating Organic Shapes for Variety */
+.icon-list li:nth-child(odd) {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    transform: rotate(-0.5deg);
+}
+
+.icon-list li:nth-child(even) {
+    border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+    transform: rotate(0.5deg);
+}
+
+.icon-list li:hover {
+    transform: scale(1.02) rotate(0deg);
+    box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent-pop), transparent 50%);
+    z-index: 1;
+}
+
+.icon-wrapper {
+    background: var(--bg);
+    padding: 0.8rem;
+    border-radius: 50%;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-list .content {
+    flex: 1;
+    line-height: 1.6;
+    color: #444;
+}
+
+.icon-list strong {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: var(--fg);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.highlight-box {
+    background: #333;
+    color: #fff;
+    padding: 1.5rem 3rem;
+    /* Increased padding for blob shape safety */
+    font-size: 1.3rem;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    transform: rotate(-1deg);
+    margin: 1rem 0 1.5rem;
+    box-shadow: 10px 10px 0 color-mix(in srgb, var(--accent-pop), transparent 50%);
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    /* Organic Shape */
+    border: none;
+    /* Remove default border if any */
+}
+
+/* Camping Grid handled by organic-card and info-grid-2col */
+
+
+.info-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.eco-card {
+    margin-top: 3rem;
+    border-style: dashed;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 1024px) {
+    .info-hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .info-hub .container {
+        padding: 0 0.75rem;
+    }
+
+    .info-hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        gap: 0.6rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-hub-card {
+        aspect-ratio: 1 / 1;
+        /* Square for more height */
+        padding: 0.4rem;
+        /* Minimum padding */
+        min-height: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 5px 5px 0 var(--shadow-color, currentColor) !important;
+        max-width: none !important;
+        margin: 0 !important;
+        width: 100%;
+    }
+
+    .info-hub-card-content {
+        margin-top: 0;
+        display: block;
+        /* Allow inline elements inside */
+        text-align: center;
+    }
+
+    .info-hub-card-title {
+        font-size: 0.95rem;
+        /* Smaller to prevent overflow */
+        margin-bottom: 0.2rem;
+        display: block;
+        line-height: 1.1;
+    }
+
+    .title-desktop,
+    .desc-desktop {
+        display: none;
+    }
+
+    .title-mobile,
+    .desc-mobile {
+        display: inline;
+    }
+
+    .info-hub-card-icon {
+        display: none !important;
+    }
+
+    .info-hub-card-desc {
+        font-size: 0.65rem;
+        /* Smaller text for dense 2-column grid */
+        max-width: 100%;
+        display: inline;
+        line-height: 1.2;
+    }
+
+    .info-hub-card-arrow {
+        position: static;
+        display: inline-block;
+        transform: none !important;
+        font-size: 1.25rem;
+        margin-left: 0.4rem;
+        opacity: 1;
+        vertical-align: baseline;
+        color: var(--fg);
+    }
+
+    .info-grid-2col,
+    .info-grid-3col {
+        grid-template-columns: 1fr;
+    }
+
+    .info-detail {
+        padding: 4rem 0 6rem;
+    }
+
+    .info-detail-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* Shorter viewports (e.g. 1440x900) */
+@media (max-height: 900px) {
+    .info-hub {
+        padding: 2rem 0 4rem;
+    }
+
+    .info-hub-grid {
+        gap: 1.25rem;
+    }
+
+    .info-hub-card {
+        min-height: clamp(160px, 40vw, 220px);
+        padding: 1rem;
+    }
+
+    .info-hub-card-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 0.75rem;
+    }
+
+    .info-hub-card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .info-hub-card-title {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        margin-bottom: 0.4rem;
+    }
+
+    .info-hub-card-desc {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,312 @@
+.page-hero {
+    position: relative;
+    padding: clamp(6rem, 12vh, 12rem) 0 clamp(2rem, 5vh, 6rem);
+    overflow: visible;
+    /* Allow shapes to bleed into next section */
+    background: var(--bg);
+}
+
+/* Background Shapes */
+.page-hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.page-hero-shape {
+    position: absolute;
+    opacity: 0.15;
+    will-change: border-radius, transform;
+}
+
+.page-hero-shape-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    top: -10%;
+    right: 5%;
+    transform-origin: center;
+    animation: morph1 25s linear infinite alternate;
+}
+
+.page-hero-shape-2 {
+    width: 250px;
+    height: 250px;
+    background: var(--accent-pop);
+    bottom: -15%;
+    left: -5%;
+    transform-origin: center;
+    animation: morph2 30s linear infinite alternate-reverse;
+}
+
+.page-hero-shape-3 {
+    width: 180px;
+    height: 180px;
+    background: #ff006e;
+    top: 30%;
+    left: 10%;
+    transform-origin: center;
+    animation: morph3 28s linear infinite alternate;
+}
+
+@keyframes morph1 {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: translate(50px, 30px) rotate(180deg);
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(-20px, -40px) rotate(360deg);
+    }
+}
+
+@keyframes morph2 {
+    0% {
+        border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        border-radius: 60% 40% 30% 70% / 40% 60% 40% 60%;
+        transform: translate(-40px, 40px) rotate(-120deg);
+    }
+
+    100% {
+        border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+        transform: translate(30px, -20px) rotate(-240deg);
+    }
+}
+
+@keyframes morph3 {
+    0% {
+        border-radius: 50% 50% 30% 70% / 50% 50% 70% 60%;
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: translate(40px, -50px) rotate(90deg);
+    }
+
+    100% {
+        border-radius: 50% 50% 30% 70% / 50% 50% 70% 60%;
+        transform: translate(-30px, 20px) rotate(180deg);
+    }
+}
+
+/* Content */
+.page-hero-content {
+    position: relative;
+    z-index: 10;
+    /* Ensure content is above shapes */
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .page-hero-content {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 0;
+    }
+}
+
+.page-hero-title {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    width: fit-content;
+}
+
+@media (min-width: 992px) {
+    .page-hero-title {
+        grid-column: 2;
+    }
+}
+
+.page-hero-title-main {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8.5vw, 6.8rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 0.9;
+    color: var(--fg);
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
+
+
+
+.page-hero-title-main::after {
+    content: '';
+    position: absolute;
+    left: -3%;
+    bottom: -8px;
+    width: 106%;
+    height: 0.32em;
+    background: var(--accent-pop);
+    opacity: 0.4;
+    z-index: -1;
+    transform: rotate(-1.2deg);
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    clip-path: polygon(0% 15%, 15% 5%, 35% 20%, 65% 10%, 85% 25%, 100% 15%,
+            100% 85%, 85% 95%, 65% 80%, 35% 90%, 15% 75%, 0% 85%);
+}
+
+.page-hero-extra {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+@media (min-width: 992px) {
+    .page-hero-extra {
+        grid-column: 3;
+        justify-content: flex-start;
+        padding-left: 2rem;
+    }
+}
+
+.hero-cta-organic {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 3rem;
+    background: var(--accent-pop);
+    color: var(--fg);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    /* Slightly smaller to fit better */
+    text-decoration: none;
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 3px solid var(--fg);
+    transform: rotate(6deg);
+    /* Little angle */
+    white-space: nowrap;
+    animation: organic-pulse-cta 3s ease-in-out infinite;
+}
+
+@keyframes organic-pulse-cta {
+    0% {
+        transform: rotate(6deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(7deg) scale(1.03);
+        background-color: #e5ff80;
+        /* Slightly brighter */
+    }
+
+    100% {
+        transform: rotate(6deg) scale(1);
+    }
+}
+
+.hero-cta-organic:hover {
+    animation-play-state: paused;
+    transform: translateY(-5px) rotate(4deg) scale(1.05);
+    background: #fff;
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.15);
+}
+
+.hero-cta-organic span {
+    line-height: 1;
+    padding-top: 0.2rem;
+}
+
+
+
+/* Accent Color Variants */
+
+
+.page-hero--pink .page-hero-title-main::after {
+    background: #ff006e;
+}
+
+.page-hero--lime .page-hero-title-main::after {
+    background: #ff006e;
+}
+
+.page-hero--navy .page-hero-title-main::after {
+    background: #ff006e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 8rem 0 3rem;
+    }
+
+    .page-hero-title {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .page-hero-shape-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .page-hero-shape-2 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .page-hero-shape-3 {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Shorter viewports (e.g. 1440x900) */
+@media (max-height: 900px) {
+    .page-hero {
+        padding: 7rem 0 2rem;
+    }
+
+    .page-hero-title-main {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+    }
+
+    .page-hero-title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 0.5rem;
+    }
+
+    .page-hero-shape-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .page-hero-shape-2 {
+        width: 140px;
+        height: 140px;
+    }
+
+    .page-hero-shape-3 {
+        width: 100px;
+        height: 100px;
+    }
+}

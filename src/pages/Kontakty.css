@@ -1,0 +1,240 @@
+.kontakty-main {
+    background: var(--bg);
+}
+
+.kontakty-container {
+    max-width: 1200px;
+    margin: 3rem auto 6rem;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Grid Layout */
+.kontakty-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+@media (min-width: 992px) {
+    .kontakty-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+        /* Vertically center align */
+    }
+}
+
+/* Typography & Info Column */
+.kontakty-info {
+    font-family: var(--font-sans);
+    padding-top: 0;
+    /* Remove top padding to let grid center it */
+}
+
+.info-section {
+    margin-bottom: 3rem;
+}
+
+.company-name {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    /* Matching hero size feel */
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    color: var(--fg);
+    line-height: 1;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    /* Increased spacing between items */
+}
+
+.info-item .icon {
+    color: var(--fg);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    padding: 8px;
+    background: var(--accent-pop);
+    border-radius: 50% 40% 60% 30% / 40% 60% 50% 60%;
+    /* Organic icon bg */
+    width: 50px;
+    /* Slightly larger icons */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--fg);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 1.3rem;
+    /* Larger text */
+    line-height: 1.8;
+    /* More breathing room */
+    color: #444;
+}
+
+/* Links & Contacts */
+.phone-link,
+.email-link {
+    font-family: var(--font-sans);
+    font-size: 1.4rem;
+    /* Larger links */
+    font-weight: 700;
+    color: var(--fg);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.phone-link:hover,
+.email-link:hover {
+    color: var(--accent-pop);
+}
+
+.sep {
+    display: none;
+}
+
+/* Form Styles - Minimalist */
+.kontakty-form-wrapper {
+    background: #fff;
+    padding: 4rem;
+    border: 3px solid var(--fg);
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    /* Organic soft square */
+    box-shadow: 8px 8px 0 #bbb;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kontakty-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-group label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--fg);
+}
+
+/* Clean, modern inputs */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1.25rem;
+    background: #fff;
+    border: 3px solid #ddd;
+    /* Thicker border for visibility */
+    border-radius: 12px;
+    /* Slightly more rounded */
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--fg);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+    font-weight: 500;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--fg);
+    background: #fff;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Modern Button */
+.submit-btn {
+    align-self: center;
+    margin-top: 2rem;
+    padding: 1rem 3.5rem;
+    background: var(--fg);
+    color: #fff;
+    border: 3px solid var(--fg);
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    /* Organic blob shape */
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 6px 6px 0 #bbb;
+}
+
+.submit-btn:hover {
+    background: var(--accent-pop);
+    color: var(--fg);
+    transform: translateY(-4px) rotate(-1deg) scale(1.05);
+    box-shadow: 8px 8px 0 #999;
+}
+
+/* Full Width Image */
+.kontakty-full-image {
+    width: 100%;
+    margin-top: 2rem;
+    position: relative;
+    /* Organic Top Wave Mask */
+    -webkit-mask-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+        linear-gradient(black, black);
+    mask-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+        linear-gradient(black, black);
+
+    -webkit-mask-size: 100% 120px, 100% calc(100% - 119px);
+    mask-size: 100% 120px, 100% calc(100% - 119px);
+    -webkit-mask-position: top center, bottom center;
+    mask-position: top center, bottom center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+.kontakty-full-image img {
+    width: 100%;
+    height: 400px;
+    /* Fixed height for better mask effect */
+    display: block;
+    object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .kontakty-container {
+        margin: -2rem auto 4rem;
+    }
+
+    .company-name {
+        font-size: 2.4rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

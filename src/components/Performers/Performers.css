@@ -1,0 +1,217 @@
+.performers-section {
+    padding: 1.5rem 0;
+    background: var(--bg);
+}
+
+.performers-heading {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-family: var(--font-heading);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    color: var(--fg);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+.performers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.performers-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.performers-actions .btn {
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    border: none;
+    /* Removed black border */
+    box-shadow: 6px 6px 0 #bbb;
+    padding: 1.2rem 3.5rem;
+    background: var(--accent-pop);
+    color: var(--fg);
+    font-family: var(--font-heading);
+    /* Match logo font */
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    /* Allow natural case */
+    font-size: 2rem;
+    /* Enlarged font */
+    position: relative;
+    overflow: visible;
+}
+
+.performers-actions .btn:hover {
+    transform: translateY(-4px) rotate(-1deg) scale(1.05);
+    box-shadow: 8px 8px 0 #999;
+    background: #fff;
+    color: var(--fg);
+}
+
+/* Forced update for organic shape */
+.performer-card {
+    background: #fff;
+    border: 3px solid var(--fg);
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70% !important;
+    /* Force organic shape */
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 8px 8px 0 #bbb;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    /* Ensure stacking context */
+}
+
+.performer-card:hover {
+    transform: translateY(-8px) rotate(-0.5deg) scale(1.02);
+    box-shadow: 10px 10px 0 #999;
+}
+
+.performer-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 2px solid var(--fg);
+    /* Divider like news card */
+}
+
+.performer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0%);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.performer-card:hover .performer-image img {
+    filter: grayscale(100%);
+    transform: scale(1.1);
+}
+
+.performer-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 60%);
+    opacity: 0.6;
+}
+
+/* Hand-drawn card styles handled above */
+
+
+/* Center align content wrapper */
+.performer-content {
+    padding: 3rem 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Crucial for flex column centering */
+    text-align: center;
+    justify-content: center;
+}
+
+.performer-genre-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    /* Increased padding to shift tags further right */
+}
+
+.genre-tag {
+    background: #ff006e;
+    color: #fff;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.performer-card:hover .genre-tag {
+    background: var(--fg);
+    color: #fff;
+}
+
+.performer-name {
+    font-family: var(--font-heading);
+    /* Updated to heading font for better impact */
+    font-size: 2.5rem;
+    /* Enlarged */
+    font-weight: 400;
+    /* Regular weight for this font */
+    color: var(--fg);
+    margin: 0 0 1rem 0;
+    /* Add margin bottom */
+    line-height: 1.1;
+    text-transform: none;
+    transition: color 0.3s ease;
+}
+
+.performer-card:hover .performer-name {
+    color: #ff006e;
+}
+
+.performers-loading {
+    text-align: center;
+    padding: 3rem 0;
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .performers-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .performers-section {
+        padding: 1.5rem 0;
+    }
+
+    .performers-heading {
+        display: none;
+    }
+
+    .performers-actions .btn {
+        padding: 0.4rem 1.25rem;
+        font-size: 1.4rem;
+        box-shadow: 4px 4px 0 #bbb;
+    }
+
+    .performer-card:hover {
+        box-shadow: 8px 8px 0 #bbb;
+    }
+
+    .genre-tag {
+        padding: 0.1rem 0.4rem !important;
+        font-size: 0.75rem;
+    }
+
+    .performer-name {
+        font-size: 2.3rem !important;
+    }
+}

@@ -1,0 +1,284 @@
+.vstupenky-main {
+    background: var(--bg);
+}
+
+.vstupenky-container {
+    max-width: 1400px;
+    /* Wider container for 4 items */
+    margin: 3rem auto 6rem;
+    padding: 0 2rem;
+    position: relative;
+    /* Above hero */
+    z-index: 10;
+}
+
+/* Grid Layout */
+.tickets-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .tickets-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .tickets-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        align-items: stretch;
+    }
+}
+
+/* Ticket Card Base */
+.ticket-card {
+    background: #fff;
+    border: 3px solid var(--fg);
+    padding: 3rem 2.5rem;
+    /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 480px;
+    /* Ensure enough height */
+    justify-content: space-between;
+}
+
+.ticket-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Ticket Types */
+/* Ticket Types */
+/* Ticket Types */
+.ticket-card.active {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    /* Softer organic square */
+    box-shadow: 12px 12px 0 var(--accent);
+}
+
+.ticket-card.upcoming {
+    border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+    /* Reversed soft square */
+    box-shadow: 8px 8px 0 #ddd;
+    opacity: 0.9;
+}
+
+.ticket-card.onsite {
+    border-radius: 225px 25px 200px 25px / 25px 200px 25px 225px;
+    /* Balanced organic */
+    box-shadow: 8px 8px 0 #ddd;
+    background: #f9f9f9;
+}
+
+/* Support Card Styling - "Visually Attractive" */
+/* Support Card Styling - "Visually Attractive" */
+.ticket-card.support {
+    border-radius: 20px 200px 20px 200px / 200px 20px 200px 20px;
+    /* Distinct organic */
+    border: 3px solid var(--accent-pop);
+    box-shadow: 12px 12px 0 var(--accent-pop);
+    background: #fff;
+}
+
+.ticket-card.support:hover {
+    box-shadow: 16px 16px 0 var(--accent-pop);
+    transform: translateY(-8px);
+}
+
+/* Card Header */
+.card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 80px;
+}
+
+.wave-badge {
+    align-self: flex-start;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.support-badge {
+    background: var(--accent-pop);
+    /* Pink badge */
+    color: #000;
+}
+
+.support-badge svg {
+    color: #ff0000;
+    fill: #ff0000;
+}
+
+.ticket-card h3 {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--fg);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Price */
+.ticket-price {
+    font-family: var(--font-sans);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--fg);
+    margin: 0.5rem 0;
+}
+
+/* Details */
+.ticket-details {
+    flex: 1;
+    /* Push button to bottom */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: #555;
+    border-top: 2px dashed #eee;
+    padding-top: 1.5rem;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.detail-limit {
+    font-size: 0.85rem;
+    color: #777;
+    padding-left: 1.5rem;
+}
+
+/* Onsite Badge */
+.onsite-badge {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #888;
+    background: #eee;
+    padding: 1rem;
+    border-radius: 4px;
+    justify-content: center;
+}
+
+/* Button */
+.buy-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    background: var(--fg);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 1.5rem;
+}
+
+.buy-btn:not(:disabled):hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.buy-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.buy-btn.support-btn {
+    background: var(--accent-pop);
+    color: var(--accent);
+    /* Contrast text */
+}
+
+.buy-btn.support-btn:hover {
+    background: var(--accent);
+    /* Darker on hover */
+    color: #fff;
+}
+
+/* Support Specifics */
+.support-mini-desc {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--fg);
+}
+
+.support-perks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.support-perks-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    padding: 0;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+    .vstupenky-container {
+        margin: 3rem auto 4rem;
+        gap: 3rem;
+    }
+
+    .tickets-grid {
+        max-width: 450px;
+        /* Prevent overly wide cards on mobile */
+        margin: 0 auto;
+        /* Center the grid */
+    }
+
+    .ticket-price {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .vstupenky-container {
+        max-width: 900px;
+        /* Constrain width for 2-column layout */
+    }
+}

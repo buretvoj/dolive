@@ -1,0 +1,111 @@
+.business-terms-main {
+    background: var(--bg);
+}
+
+.terms-header-wrapper {
+    padding: 12rem 0 4rem;
+}
+
+/* Constrain header content to match body text width */
+.terms-header-wrapper .container {
+    /* max-width removed to match top menu width */
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.terms-meta {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.terms-title {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 4vw, 3rem);
+    /* Matches AktualityDetail */
+    line-height: 1.2;
+    color: var(--fg);
+    margin: 0 0 3rem 0;
+    /* Matches AktualityDetail */
+    font-weight: 700;
+}
+
+.terms-container {
+    /* max-width removed to match top menu width */
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+}
+
+
+
+.terms-content section {
+    margin-bottom: 3rem;
+}
+
+.terms-content h2 {
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    margin: 0 0 1.5rem;
+    color: var(--fg);
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.terms-content p {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    /* Matches AktualityDetail */
+    line-height: 1.8;
+    /* Matches AktualityDetail */
+    color: #333;
+    margin-bottom: 1.5rem;
+    /* Matches AktualityDetail */
+}
+
+.terms-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.terms-content li {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    /* Matches AktualityDetail p */
+    line-height: 1.8;
+    /* Matches AktualityDetail p */
+    color: #333;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.terms-content li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #000;
+    font-weight: bold;
+}
+
+.terms-content a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-pop);
+    text-underline-offset: 3px;
+    transition: all 0.2s ease;
+}
+
+.terms-content a:hover {
+    color: #000;
+    background: var(--accent-pop);
+    text-decoration: none;
+}

@@ -1,0 +1,230 @@
+.footer {
+    background: #1a1f2e;
+    color: #fff;
+    padding: 10rem 0 1.5rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0;
+    z-index: 5;
+}
+
+@media (min-width: 769px) {
+    .footer {
+        /* Organic Top Wave Mask */
+        -webkit-mask-image:
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+            linear-gradient(black, black);
+        mask-image:
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+            linear-gradient(black, black);
+
+        -webkit-mask-size: 100% 120px, 100% calc(100% - 119px);
+        mask-size: 100% 120px, 100% calc(100% - 119px);
+        -webkit-mask-position: top center, bottom center;
+        mask-position: top center, bottom center;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        margin-top: -120px;
+        /* Overlap previous section for seamless organic transition */
+    }
+}
+
+.footer .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Main Grid */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+/* Logo */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.footer-logo-image {
+    height: 4rem;
+    width: auto;
+    filter: brightness(0) invert(1);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.logo-tagline {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-heading {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+    text-align: left;
+}
+
+/* Contact Info */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-text svg {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+    color: var(--accent-pop);
+}
+
+/* Links with Icons */
+.footer-links-with-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-link-inline {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.footer-link-inline:hover {
+    color: var(--accent-pop);
+}
+
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: var(--accent-pop);
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.footer-copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+    }
+
+    .footer-section:first-child {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .footer-logo {
+        align-items: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 4rem 0 1.5rem;
+        margin-top: -40px;
+        /* Overlap to fix gap */
+
+        /* Restore Organic Top Wave Mask for Mobile - Smoother/Decent */
+        -webkit-mask-image:
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,15 C1000,0 800,30 600,15 C300,0 0,15 0,15 Z' fill='black'/%3E%3C/svg%3E"),
+            linear-gradient(black, black);
+        mask-image:
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,15 C1000,0 800,30 600,15 C300,0 0,15 0,15 Z' fill='black'/%3E%3C/svg%3E"),
+            linear-gradient(black, black);
+
+        -webkit-mask-size: 100% 40px, 100% calc(100% - 39px);
+        mask-size: 100% 40px, 100% calc(100% - 39px);
+        -webkit-mask-position: top center, bottom center;
+        mask-position: top center, bottom center;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+    }
+
+    .footer .container {
+        padding-top: 1.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-section:first-child {
+        grid-column: 1;
+        text-align: center;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+    }
+}

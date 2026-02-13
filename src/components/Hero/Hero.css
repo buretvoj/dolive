@@ -1,0 +1,401 @@
+.hero {
+    position: relative;
+    /* Use calc to ensure full viewport height minus header, so it doesn't cause unnecessary scroll if content is short */
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    /* Push the hero down by the header height to separate them completely */
+    margin-top: var(--header-height);
+}
+
+.hero.has-bg-image {
+    min-height: auto;
+    display: grid;
+    place-items: center;
+    padding-top: 0;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    grid-area: 1 / 1;
+    width: 100%;
+    /* No extra padding needed now that we have margin-top */
+    z-index: 10;
+}
+
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    /* Let the font character shine */
+    letter-spacing: -0.04em;
+    position: relative;
+    display: inline-block;
+}
+
+/* Lime accent block behind title */
+.hero-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: -1rem;
+    width: 120%;
+    height: 40%;
+    background: var(--accent-pop);
+    z-index: -1;
+    transform: skewY(-1deg);
+    opacity: 0.3;
+}
+
+.hero-description-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    padding-left: 0;
+    border-left: none;
+    /* Removed yellow border */
+}
+
+.hero-location-icon {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+.hero-description {
+    font-size: 1.75rem;
+    opacity: 0.9;
+    margin: 0;
+    max-width: 500px;
+    font-weight: 300;
+}
+
+/* Light text overrides when bg image is active */
+.hero.has-bg-image .hero-title,
+.hero.has-bg-image .hero-description {
+    color: #ffffff;
+    opacity: 1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure accent color in title uses the pop color */
+.hero.has-bg-image .hero-title .accent {
+    color: var(--accent-pop);
+}
+
+.hero.has-bg-image .hero-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero.has-bg-image .hero-description-wrapper {
+    border-left-color: var(--accent-pop);
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-cta .btn {
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    border: 2px solid #fff;
+    padding: 0.6rem 2rem;
+    /* Further reduced padding */
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 1rem;
+    /* Hero button scale */
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 6px 6px 0 #bbb;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+}
+
+.hero-cta .btn-primary {
+    background: transparent;
+}
+
+.hero-cta .btn-secondary {
+    background: transparent;
+}
+
+.hero-cta .btn:hover {
+    transform: translateY(-4px) rotate(-1deg) scale(1.05);
+    box-shadow: 8px 8px 0 #999;
+    color: var(--fg);
+}
+
+.hero-cta .btn-primary:hover {
+    background: var(--accent-pop);
+    /* Keep original background */
+}
+
+.hero-cta .btn-secondary:hover {
+    background: #fff;
+    /* Keep original background */
+}
+
+/* Visual Styles */
+
+.hero-visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-visual-image {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 1;
+    grid-area: 1 / 1;
+    overflow: hidden;
+    /* Ensure mask containment */
+
+    /* Organic Top Wave Mask */
+    -webkit-mask-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,15 C1000,0 800,30 600,15 C300,0 0,15 0,15 Z' fill='black'/%3E%3C/svg%3E"),
+        linear-gradient(black, black);
+    mask-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,15 C1000,0 800,30 600,15 C300,0 0,15 0,15 Z' fill='black'/%3E%3C/svg%3E"),
+        linear-gradient(black, black);
+
+    -webkit-mask-size: 100% 100px, 100% calc(100% - 99px);
+    mask-size: 100% 100px, 100% calc(100% - 99px);
+    -webkit-mask-position: top center, bottom center;
+    mask-position: top center, bottom center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+.hero.has-bg-image .hero-visual-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Overlay needs to cover the image */
+.hero.has-bg-image .visual-overlay {
+    position: absolute;
+    inset: 0;
+    /* Darker gradient for better text contrast/visibility with lime accent edge */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 70%, rgba(204, 255, 0, 0.1) 100%);
+    z-index: 2;
+}
+
+/* Default overlay for split layout */
+.hero:not(.has-bg-image) .visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--bg) 10%, transparent 100%);
+    z-index: 2;
+}
+
+.visual-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #e5e5e5;
+    background-image: radial-gradient(var(--accent-muted) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.desc-mobile {
+    display: none;
+}
+
+/* Organic Wave */
+.hero-wave {
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    /* Slight overlap to prevent gaps */
+    left: 0;
+    width: 100%;
+    height: 120px;
+    /* Taller for desktop */
+    z-index: 5;
+    pointer-events: none;
+}
+
+.hero-wave svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: var(--bg);
+    transform: rotate(180deg);
+}
+
+@media (max-width: 1024px) {
+
+    .hero,
+    .hero.has-bg-image {
+        min-height: auto !important;
+        /* clip-path removed for organic wave */
+        padding: 6rem 0 3.5rem !important;
+        background-color: #0d111d !important;
+        background-image:
+            /* Subtle Grain Texture */
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+            /* Layered Organic Blobs */
+            radial-gradient(circle at 10% 20%, rgba(204, 255, 0, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 90% 80%, rgba(255, 0, 110, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 50% 50%, rgba(65, 75, 120, 0.4) 0%, #0d111d 100%) !important;
+        background-blend-mode: overlay, normal, normal, normal;
+        box-shadow: inset 0 30px 60px -20px rgba(0, 0, 0, 0.8) !important;
+        margin-top: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative;
+        overflow: visible;
+        /* Allow wave to hang */
+    }
+
+    .hero-wave {
+        height: 50px;
+        /* Reduced height for mobile */
+    }
+
+
+
+    /* Decorative blurred accent in background */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        width: 15rem;
+        height: 15rem;
+        background: var(--accent-pop);
+        filter: blur(80px);
+        opacity: 0.1;
+        z-index: 1;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+    }
+
+    .hero-visual,
+    .hero-visual-image {
+        display: none !important;
+    }
+
+    .hero-content {
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-title.title-date {
+        display: block !important;
+        font-family: var(--font-heading);
+        font-size: 2.75rem;
+        /* Larger font */
+        margin-bottom: 1.25rem;
+        color: #fff !important;
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+    }
+
+    .hero-title.title-date::after {
+        content: '';
+        position: absolute;
+        left: -5%;
+        bottom: 0px;
+        width: 110%;
+        height: 35%;
+        background: var(--accent-pop);
+        opacity: 0.6;
+        z-index: -1;
+        transform: rotate(-1.5deg);
+        border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+        clip-path: polygon(0% 15%, 15% 5%, 35% 20%, 65% 10%, 85% 25%, 100% 15%,
+                100% 85%, 85% 95%, 65% 80%, 35% 90%, 15% 75%, 0% 85%);
+        pointer-events: none;
+    }
+
+    /* Remove the old lime block */
+    .hero-title::before {
+        display: none !important;
+    }
+
+    .hero-description-wrapper {
+        flex-direction: row;
+        /* Change to horizontal */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.5rem;
+        margin-bottom: 0;
+    }
+
+    .hero-location-icon {
+        margin-top: 0;
+        width: 24px;
+        /* Reduced to fit better inline */
+        height: 24px;
+        color: var(--accent-pop);
+        opacity: 1;
+    }
+
+    .hero-description {
+        font-size: 1.5rem;
+        max-width: 100%;
+        color: #fff !important;
+        font-family: var(--font-heading);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1;
+    }
+
+    .desc-desktop {
+        display: none;
+    }
+
+    .desc-mobile {
+        display: inline-block;
+    }
+
+    .hero-cta {
+        display: none;
+    }
+}

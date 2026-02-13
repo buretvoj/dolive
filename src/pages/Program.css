@@ -1,0 +1,515 @@
+.program-main {
+    background: var(--bg);
+}
+
+/* Hero Section */
+.program-hero {
+    background: var(--accent-muted);
+    padding: 8rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.program-hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: var(--accent-pop);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.2;
+}
+
+.program-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin: 0 0 1rem 0;
+    position: relative;
+}
+
+.program-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--fg);
+    margin: 0;
+    opacity: 0.7;
+}
+
+/* ======================= */
+/* ARCHIVE CTA             */
+/* ======================= */
+
+.archive-cta-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0 2rem;
+}
+
+.archive-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--fg);
+    text-decoration: none;
+    position: relative;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    isolation: isolate;
+}
+
+.archive-cta:hover {
+    transform: translateX(-8px);
+    background: transparent;
+    box-shadow: none;
+    color: var(--fg);
+}
+
+.archive-cta::after {
+    content: '';
+    position: absolute;
+    left: -5%;
+    bottom: 5px;
+    width: 110%;
+    height: 0.4em;
+    background: #ccc;
+    opacity: 0.5;
+    z-index: -1;
+    transform: rotate(-1.5deg);
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    clip-path: polygon(0% 15%, 15% 5%, 35% 20%, 65% 10%, 85% 25%, 100% 15%,
+            100% 85%, 85% 95%, 65% 80%, 35% 90%, 15% 75%, 0% 85%);
+    display: block;
+    animation: floating-marker 6s ease-in-out infinite;
+}
+
+@keyframes floating-marker {
+    0% {
+        transform: translate(0, 0) rotate(-1.5deg);
+    }
+
+    33% {
+        transform: translate(2px, 1px) rotate(-2deg);
+    }
+
+    66% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(-1.5deg);
+    }
+}
+
+/* Performers Section */
+.program-performers {
+    padding: 3rem 0;
+    background: var(--bg);
+}
+
+/* ======================= */
+/* LINEUP SECTION          */
+/* ======================= */
+
+.lineup-section {
+    padding: 12rem 0 8rem;
+    /* More up */
+    background: var(--accent-muted);
+    position: relative;
+    overflow: hidden;
+    margin-top: -60px;
+    z-index: 5;
+
+    /* Organic Top Wave Mask */
+    -webkit-mask-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+        linear-gradient(black, black);
+    mask-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 L1200,100 L1200,45 C1000,95 800,15 600,65 C300,95 0,45 0,45 Z' fill='black'/%3E%3C/svg%3E"),
+        linear-gradient(black, black);
+
+    -webkit-mask-size: 100% 120px, 100% calc(100% - 119px);
+    mask-size: 100% 120px, 100% calc(100% - 119px);
+    -webkit-mask-position: top center, bottom center;
+    mask-position: top center, bottom center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+.lineup-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.lineup-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--fg);
+    margin: 0 0 1rem 0;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    /* Ensure text is above */
+}
+
+
+
+.lineup-subtitle {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    color: #666;
+    margin: 1.5rem 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* Day Tabs - Pill Toggle Style */
+.lineup-tabs {
+    display: inline-flex;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    margin: 0 auto 4rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lineup-tab {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.lineup-tab:first-child {
+    border-right: 1px solid var(--border);
+}
+
+.lineup-tab:hover {
+    background: #f5f5f5;
+}
+
+.lineup-tab.active {
+    background: var(--fg);
+}
+
+.tab-day {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.lineup-tab.active .tab-day {
+    color: var(--accent-pop);
+}
+
+.tab-date {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--fg);
+    transition: color 0.3s ease;
+}
+
+.lineup-tab.active .tab-date {
+    color: #fff;
+}
+
+/* Stages Grid */
+.stages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.stage-column {
+    background: #fff;
+    border: 3px solid var(--fg);
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    /* Softer organic square */
+    box-shadow: 10px 10px 0 #bbb;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stage-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 15px 15px 0 #999;
+}
+
+.stage-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center heading */
+    gap: 1.25rem;
+    padding: 1rem 2rem;
+    background: var(--fg);
+    border-bottom: 4px solid;
+}
+
+.stage-name {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stage-acts {
+    padding: 1rem 2.5rem 2.5rem;
+}
+
+/* Act Cards */
+.act-card {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.act-card:last-child {
+    border-bottom: none;
+}
+
+.act-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--stage-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.act-card:hover {
+    background: #f8f8f8;
+}
+
+.act-card:hover::before {
+    opacity: 1;
+    background: #ff006e;
+    /* Dynamic pink hover */
+}
+
+.act-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.act-artist {
+    font-family: var(--font-sans);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin: 0 0 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.act-card:hover .act-artist {
+    color: #ff006e;
+}
+
+.act-duration {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .program-hero {
+        padding: 6rem 0 3rem;
+    }
+
+    .lineup-section {
+        margin-top: -40px;
+        padding-top: 6rem !important;
+        -webkit-mask-size: 100% 50px, 100% calc(100% - 49px);
+        mask-size: 100% 50px, 100% calc(100% - 49px);
+    }
+
+    .lineup-header {
+        display: none;
+    }
+
+    .lineup-tabs {
+        flex-direction: column;
+        width: calc(100% - 2rem);
+        left: 1rem;
+        transform: none;
+    }
+
+    .lineup-tab {
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .lineup-tab:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .stages-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .lineup-title {
+        font-size: 2.5rem;
+    }
+
+    .act-artist {
+        font-size: 1.1rem;
+    }
+}
+
+/* Shorter viewports (e.g. 1440x900) */
+@media (max-height: 900px) {
+    .lineup-section {
+        padding: 3rem 0 4rem;
+    }
+
+    .lineup-header {
+        margin-bottom: 2rem;
+    }
+
+    .lineup-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .lineup-subtitle {
+        margin: 0.75rem 0 0 0;
+        font-size: 1rem;
+    }
+
+    .lineup-tabs {
+        margin: 0 auto 2rem;
+    }
+
+    .lineup-tab {
+        padding: 0.75rem 2rem;
+        gap: 0.75rem;
+    }
+
+    .stages-grid {
+        gap: 2rem;
+    }
+
+    .stage-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .stage-acts {
+        padding: 0.5rem;
+    }
+
+    .act-card {
+        padding: 1rem 1.25rem;
+    }
+
+    .act-time {
+        margin-bottom: 0.25rem;
+        font-size: 0.85rem;
+    }
+
+    .act-artist {
+        font-size: 1.1rem;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .act-duration {
+        font-size: 0.8rem;
+    }
+
+    .program-performers {
+        padding: 2rem 0;
+    }
+
+    .archive-cta-wrapper {
+        padding: 2rem 0 1rem;
+    }
+}
+
+/* Custom override for Program page images - Colored by default, B&W on hover */
+.program-performers .performer-image img {
+    filter: grayscale(0%);
+}
+
+.program-performers .performer-card:hover .performer-image img {
+    filter: grayscale(100%);
+    transform: scale(1.1);
+}
+
+/* Force center alignment for performer tags */
+.performer-content {
+    align-items: center !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.performer-genre-tags {
+    justify-content: center !important;
+    display: flex !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+    flex-wrap: wrap !important;
+}
+
+/* Custom override for Program page tags */
+.program-performers .genre-tag {
+    background: #fff !important;
+    color: #000 !important;
+    border: 1px solid #000;
+}
