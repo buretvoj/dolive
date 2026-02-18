@@ -5,10 +5,12 @@ import './Performers.css'
 
 interface Performer {
     id: string
+    slug: string
     name: string
     genre: string
     photo: string | null
     description: string | null
+    year: number
     active: boolean
     order: number
 }
@@ -40,7 +42,7 @@ export default function Performers() {
                 <h2 className="performers-heading">Program 2026</h2>
                 <div className="performers-grid">
                     {performers.slice(0, 3).map(performer => (
-                        <div key={performer.id} className="performer-card">
+                        <Link to={`/performers/${performer.slug}`} key={performer.id} className="performer-card">
                             {performer.photo && (
                                 <div className="performer-image">
                                     <img src={performer.photo} alt={performer.name} />
@@ -51,7 +53,7 @@ export default function Performers() {
                                 <h3 className="performer-name">{performer.name}</h3>
 
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
                 <div className="performers-actions">

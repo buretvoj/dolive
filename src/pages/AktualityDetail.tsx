@@ -15,13 +15,17 @@ export default function AktualityDetail() {
             <main className="aktuality-detail-main">
                 <article className="article">
                     {/* Article Header & Hero Image */}
-                    <div className="article-header-wrapper">
-                        <div className="page-hero-bg">
-                            <div className="page-hero-shape page-hero-shape-1"></div>
-                            <div className="page-hero-shape page-hero-shape-2"></div>
-                            <div className="page-hero-shape page-hero-shape-3"></div>
+                    {/* Article Header & Hero Image (Full Width) */}
+                    <div className="article-header-full">
+                        <div className="article-hero-bg">
+                            <img
+                                src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&h=600&fit=crop"
+                                alt="Article Cover"
+                            />
+                            <div className="article-overlay"></div>
                         </div>
-                        <div className="container">
+
+                        <div className="container article-header-content">
                             <div className="article-meta-top">
                                 <span className="article-tag">Novinky</span>
                                 <div className="meta-item">
@@ -29,21 +33,24 @@ export default function AktualityDetail() {
                                     <span>15. ledna 2026</span>
                                 </div>
                             </div>
-
                             <h1 className="article-title">Oznámení prvních headlinerů festivalu 2026</h1>
-
-                            <div className="article-hero-image">
-                                <img
-                                    src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&h=600&fit=crop"
-                                    alt="Article Cover"
-                                />
-                                <div className="article-overlay"></div>
-                            </div>
                         </div>
                     </div>
 
                     {/* Article Content */}
                     <div className="container article-container">
+                        {/* Mobile Title (Visible only on mobile, moved from header) */}
+                        <h1 className="article-title-mobile">Oznámení prvních headlinerů festivalu 2026</h1>
+
+                        {/* Mobile Meta (Visible only on mobile) */}
+                        <div className="article-meta-mobile">
+                            <span className="article-tag">Novinky</span>
+                            <div className="meta-item">
+                                <Calendar size={16} />
+                                <span>15. ledna 2026</span>
+                            </div>
+                        </div>
+
                         <div className="article-content">
                             <p className="lead">
                                 S radostí oznamujeme první velká jména letošního ročníku! Připravte se na nezapomenutelné vystoupení světových hvězd elektronické scény, které rozzáří pódia Dolive Festivalu.
@@ -53,7 +60,7 @@ export default function AktualityDetail() {
                                 Letošní ročník Dolive Festivalu slibuje být tím největším v naší historii. Po měsících vyjednávání a příprav můžeme konečně odhalit první vlnu umělců, kteří zavítají do Skutče u Litomyšle.
                             </p>
 
-                            <h2>Světová jména na dosah ruky</h2>
+                            <h3>Světová jména na dosah ruky</h3>
                             <p>
                                 Hlavním tahákem letošního ročníku bude legendární britské elektronické duo, které se vrací na pódia po pětileté pauze. Doplní je vycházející hvězdy berlínské techno scény a špička českého alternativního popu. Snažili jsme se sestavit lineup tak, aby si na své přišli jak milovníci taneční hudby, tak fanoušci experimentálnějších žánrů.
                             </p>

@@ -78,6 +78,18 @@
     margin-top: 0;
 }
 
+@media (min-width: 1025px) {
+    .news-grid>article:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-grid>article:nth-child(4) {
+        display: none;
+    }
+}
+
 .news-card {
     background: #fff;
     border: 3px solid var(--fg);

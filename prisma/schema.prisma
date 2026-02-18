@@ -63,12 +63,38 @@ model Navigation {
 
 model Performer {
   id          String   @id @default(cuid())
+  slug        String   @unique
   name        String
   genre       String   // Category/genre tags (comma-separated or single)
   photo       String?  @db.Text // Base64 image
   description String?  @db.Text
+  links       Json?    // Social links: { facebook, instagram, soundcloud, website, youtube }
+  year        Int      @default(2026)
+  videoUrl    String?  @db.Text
   active      Boolean  @default(true)
   order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Ticket {
+  id          String   @id @default(cuid())
+  title       String
+  price       String
+  badge       String?
+  description String?  @db.Text // e.g., "do vyprodání" or "Podpořte nás..."
+  features    String?  @db.Text // e.g., "nejpozději do..." or multi-line perks
+  buttonText  String?
+  type        String   // active, upcoming, support, onsite
+  order       Int      @default(0)
+  active      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

@@ -257,8 +257,7 @@
 @media (max-width: 1024px) {
     .header {
         height: 65px;
-        /* Reduced from 75px */
-        top: -5px;
+        top: 0;
         /* Move up to hide top excess */
         background: rgba(26, 31, 46, 0.95) !important;
         backdrop-filter: blur(10px);

@@ -1,0 +1,125 @@
+.performer-detail-image {
+    position: relative;
+    margin-bottom: 2.5rem;
+    /* Consolidating to match video spacing */
+}
+
+.performer-detail-image img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+.detail-genre-tags {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+
+.detail-social-overlay {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+
+.detail-genre-tag {
+    background: #ff006e;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-social-circle {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-social-circle:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .performer-detail-image {
+        margin-bottom: 1.5rem;
+    }
+
+    .detail-genre-tags {
+        top: 0.5rem;
+        left: 0.5rem;
+        gap: 0.4rem;
+    }
+
+    .detail-social-overlay {
+        bottom: 0.5rem;
+        left: 0.5rem;
+        gap: 0.4rem;
+    }
+
+    .detail-genre-tag {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.65rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-social-circle {
+        width: 32px;
+        height: 32px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-social-circle svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Social Links Styles (Old cleanup) */
+.performer-social-links {
+    display: none;
+    /* Removed from footer area */
+}
+
+/* Video Section Cleanup */
+.performer-video-section {
+    margin-top: 2.5rem;
+}
+
+.organic-back-button {
+    margin-top: 2rem !important;
+    /* Overriding 4rem to half */
+}
+
+@media (max-width: 768px) {
+    .performer-video-section {
+        margin-top: 1.5rem !important;
+    }
+
+    .organic-back-button {
+        margin-top: 1.5rem !important;
+    }
+}

@@ -10,10 +10,12 @@ import './Program.css'
 
 interface Performer {
     id: string
+    slug: string
     name: string
     genre: string
     photo: string | null
     description: string | null
+    year: number
     active: boolean
     order: number
 }
@@ -112,7 +114,7 @@ export default function Program() {
                         ) : (
                             <div className="performers-grid">
                                 {performers.map((performer) => (
-                                    <div key={performer.id} className="performer-card">
+                                    <Link to={`/performers/${performer.slug}`} key={performer.id} className="performer-card">
                                         {performer.photo && (
                                             <div className="performer-image">
                                                 <img src={performer.photo} alt={performer.name} />
@@ -123,7 +125,7 @@ export default function Program() {
                                             <h3 className="performer-name">{performer.name}</h3>
 
                                         </div>
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
                         )}

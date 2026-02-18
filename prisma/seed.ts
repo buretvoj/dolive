@@ -37,6 +37,27 @@ async function main() {
         console.log(`Created page: ${page.title}`);
     }
 
+    // 3. Create Admin User
+    const existingAdmin = await prisma.user.findFirst();
+
+    if (!existingAdmin) {
+        // Password: 'dolive' hashed with bcrypt (cost 10)
+        // This hash is for 'dolive': $2a$10$TjK.H9f.z9.t.h.u.g.s.o.f.d.o.l.i.v.e  <-- example, let's use a real one generated safely
+        // But since we can use bcryptjs in TSX environment:
+        const bcrypt = require('bcryptjs');
+        const hashedPassword = await bcrypt.hash('dolive', 10);
+
+        await prisma.user.create({
+            data: {
+                username: 'admin',
+                password: hashedPassword,
+            },
+        });
+        console.log('Created admin user: admin / dolive');
+    } else {
+        console.log('Admin user already exists.');
+    }
+
     console.log('Seeding complete!');
 }
 

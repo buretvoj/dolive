@@ -17,7 +17,7 @@ interface Page {
     sections: Section[]
 }
 
-const FIXED_SLUGS = ['index', 'about', 'gallery', 'tickets']
+const FIXED_SLUGS = ['index', 'tickets', 'info']
 
 const readFile = (file: File): Promise<string> => {
     return new Promise((resolve) => {
@@ -34,6 +34,8 @@ export default function Admin() {
     const [saving, setSaving] = useState(false)
     const [dragActive, setDragActive] = useState<string | null>(null)
     const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    const getToken = () => localStorage.getItem('token')
 
     const fetchPages = () => {
         fetch(`${import.meta.env.VITE_API_URL}/api/pages`)
@@ -55,10 +57,23 @@ export default function Admin() {
     }
 
     useEffect(() => {
+        const token = getToken()
+        if (!token) {
+            window.location.href = '/login'
+            return
+        }
         fetchPages()
     }, [])
 
     const handleSelectPage = (slug: string) => {
+        if (slug === 'tickets') {
+            window.location.href = '/admin/tickets'
+            return
+        }
+        if (slug === 'info') {
+            window.location.href = '/admin/info'
+            return
+        }
         setLoading(true)
         fetch(`${import.meta.env.VITE_API_URL}/api/pages/${slug}`)
             .then(res => res.json())
@@ -79,11 +94,18 @@ export default function Admin() {
     const saveToServer = async (sectionId: string, content: any) => {
         setSaving(true)
         try {
-            await fetch(`${import.meta.env.VITE_API_URL}/api/sections/${sectionId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/sections/${sectionId}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getToken()}`
+                },
                 body: JSON.stringify({ content })
             })
+            if (res.status === 401 || res.status === 403) {
+                window.location.href = '/login'
+                return
+            }
         } catch (error) {
             console.error('Update failed:', error)
         } finally {
@@ -150,13 +172,20 @@ export default function Admin() {
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/api/pages/${activePage.id}/sections`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getToken()}`
+                },
                 body: JSON.stringify({
                     type,
                     order: activePage.sections.length + 1,
                     content: defaultContent
                 })
             })
+            if (res.status === 401 || res.status === 403) {
+                window.location.href = '/login'
+                return
+            }
             if (res.ok) {
                 handleSelectPage(activePage.slug)
             }
@@ -171,7 +200,16 @@ export default function Admin() {
         if (!confirm('Are you sure?')) return
         setSaving(true)
         try {
-            await fetch(`${import.meta.env.VITE_API_URL}/api/sections/${id}`, { method: 'DELETE' })
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/sections/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${getToken()}`
+                }
+            })
+            if (res.status === 401 || res.status === 403) {
+                window.location.href = '/login'
+                return
+            }
             if (activePage) {
                 setActivePage({
                     ...activePage,
@@ -198,7 +236,7 @@ export default function Admin() {
                             className={`nav-item ${activePage?.id === p.id ? 'active' : ''}`}
                             onClick={() => handleSelectPage(p.slug)}
                         >
-                            {p.title}
+                            {p.slug === 'index' ? 'Domů' : (p.slug === 'info' ? 'Info' : p.title)}
                         </button>
                     ))}
                     <button
@@ -206,6 +244,16 @@ export default function Admin() {
                         onClick={() => window.location.href = '/admin/performers'}
                     >
                         Performers
+                    </button>
+                    <button
+                        className="nav-item"
+                        onClick={() => {
+                            localStorage.removeItem('token')
+                            window.location.href = '/login'
+                        }}
+                        style={{ color: 'red' }}
+                    >
+                        Logout
                     </button>
                 </nav>
                 <a href="/" className="back-link">← Back to Site</a>
@@ -449,4 +497,5 @@ export default function Admin() {
         </div>
     )
 }
+
 

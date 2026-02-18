@@ -26,6 +26,12 @@ const DUMMY_POSTS: BlogPost[] = [
         title: 'Udržitelnost na Dolive',
         excerpt: 'Zavázali jsme se ke snížení naší ekologické stopy. Zjistěte více o našich zelených iniciativách, včetně zero-waste jídla, recyklace a obnovitelné energie, které pohání náš festival.',
         date: '18. 02. 2026'
+    },
+    {
+        id: 4,
+        title: 'Partnerství s lokálními producenty',
+        excerpt: 'Spolupracujeme s místními farmáři a řemeslníky, abychom vám přinesli tu nejlepší lokální gastronomii a craft pivo přímo z regionu. Těšit se můžete na domácí sýry, uzeniny a čerstvé pečivo.',
+        date: '25. 02. 2026'
     }
 ]
 

@@ -219,7 +219,8 @@
 }
 
 .field-group input,
-.field-group textarea {
+.field-group textarea,
+.field-group select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--border);
@@ -595,4 +596,79 @@
     background: #ff0000;
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+}
+
+/* Preview Button on Card */
+.btn-preview-card {
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-preview-card:hover {
+    background: white;
+    color: black;
+}
+
+/* Preview Modal */
+.preview-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.preview-modal-content {
+    background: #000;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid #333;
+}
+
+.btn-close-preview {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10000;
+    transition: all 0.2s;
+}
+
+.btn-close-preview:hover {
+    background: #ff0000;
+    transform: rotate(90deg);
+}
+
+.preview-inner {
+    scrollbar-width: thin;
+    scrollbar-color: #444 transparent;
 }
